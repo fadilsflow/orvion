@@ -8,10 +8,11 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+
 export function Hero() {
     return (
         <section className="container relative mx-auto px-4 py-32 text-center">
-
+            
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
                 <span className="text-emerald-400">Minecraft</span> Hosting
                 <br />

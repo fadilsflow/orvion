@@ -4,57 +4,102 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { Menu, Search, X } from "lucide-react"
+import { Menu, Search, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { DialogTitle } from "@radix-ui/react-dialog"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
-
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import Link from "next/link"
+import React from "react"
+import Image from "next/image"
+import { SearchCommand } from "@/components/layout/search-comand"
+
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
 
     const menuItems = [
-        { label: "All", href: "/search" },
-        { label: "Minecraft Hosting", href: "/search" },
-        { label: "Private Hosting", href: "/search" },
-        { label: "Domain", href: "/search" },
-        { label: "Vps", href: "/search" },
-        { label: "Other", href: "/search" },
+        { label: "All Services", href: "/search" },
+        {
+            label: "Hosting",
+            href: "/search",
+            items: [
+                { label: "Minecraft Hosting", href: "/search" },
+                { label: "Private Hosting", href: "/search" },
+            ]
+        },
+        {
+            label: "Domain",
+            href: "/search",
+            items: [
+                { label: "Domain", href: "/search" },
+            ]
+        },
+        {
+            label: "Vps",
+            href: "/search",
+            items: [
+                { label: "Vps Legale", href: "/search" },
+                { label: "Vps Digital Ocean", href: "/search" },
+            ]
+        },
     ]
 
-
     return (
-        <nav className="sticky top-0 bg-background/80 backdrop-blur-lg  z-50">
-            <div className="container mx-auto px-10">
+        <nav className="sticky top-0 bg-background/80 backdrop-blur-lg z-50 ">
+            <div className="container mx-auto px-10 border-b">
                 <div className="flex items-center justify-between h-16">
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-1">
                         <Link href="/">
-                            <h1 className="text-xl font-bold ">
-                                Orvion Store.
+                            <Image src="/logo.svg" alt="logo" width={32} height={32} />
+                        </Link>
+
+                        <Link href="/" className="mr-7">
+                            <h1 className="text-xl font-bold">
+                                Orvion Store<span className="text-pink-500">.</span>
                             </h1>
                         </Link>
 
                         <div className="hidden md:flex gap-6">
                             {menuItems.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    className="text-sm font-medium text-foreground/80 hover:text-primary  transition-colors"
-                                >
-                                    {item.label}
-                                </Link>
+                                item.items ? (
+                                    <DropdownMenu key={item.label} >
+                                        <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                                            {item.label}
+                                            <ChevronDown className="h-4 w-4" />
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="bg-dark">
+                                            {item.items.map((subItem) => (
+                                                <DropdownMenuItem key={subItem.label}>
+                                                    <Link href={subItem.href} className="w-full">
+                                                        {subItem.label}
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            ))}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                ) : (
+                                    <Link
+                                        key={item.label}
+                                        href={item.href}
+                                        className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                )
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <div className="relative hidden sm:block">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                placeholder="Search for product..."
-                                className="pl-10 w-[200px] lg:w-[300px] shadow-sm"
-                            />
+                    <div className="flex items-center gap-10">
+                        <div className="relative hidden sm:block w-[300px]">
+                            <SearchCommand />
                         </div>
+
                         <Button className="bg-blue-700 hover:bg-blue-800 text-white" >
                             Order now
                         </Button>
@@ -72,7 +117,6 @@ export function Navbar() {
                                     <div className="flex justify-between items-center mb-8">
                                         <h2 className="text-lg font-bold">Menu</h2>
                                         <SheetClose className=" opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-
                                             <VisuallyHidden>Close menu</VisuallyHidden>
                                         </SheetClose>
                                     </div>
