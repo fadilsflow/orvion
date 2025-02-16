@@ -16,6 +16,7 @@ const products = Array(8).fill({
         backupSlots: "1",
         databaseSlots: "1",
     },
+  
 })
 
 export function ProductGrid() {
