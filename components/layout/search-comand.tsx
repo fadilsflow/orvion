@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import { DialogTitle } from "@radix-ui/react-dialog"
+import { cn } from "@/lib/utils"
 
 import {
     CommandDialog,
@@ -23,7 +24,9 @@ import {
     CommandSeparator,
 } from "@/components/ui/command"
 
-export function SearchCommand() {
+interface SearchCommandProps extends React.HTMLAttributes<HTMLDivElement> { }
+
+export function SearchCommand({ className, ...props }: SearchCommandProps) {
     const [open, setOpen] = React.useState(false)
 
     React.useEffect(() => {
@@ -39,14 +42,13 @@ export function SearchCommand() {
     }, [])
 
     return (
-        <>
+        <div className={cn("relative", className)} {...props}>
             <button
                 onClick={() => setOpen(true)}
                 className="relative w-full"
             >
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <span className="inline-flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm text-muted-foreground">
-                    <span className="ml-8">Search products...</span>
+                    <span >Search products...</span>
                     <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:inline-flex">
                         <span className="text-xs">⌘</span>K
                     </kbd>
@@ -92,7 +94,7 @@ export function SearchCommand() {
                         </CommandItem>
                     </CommandGroup>
                 </CommandList>
-            </CommandDialog >
-        </>
+            </CommandDialog>
+        </div>
     )
 }
