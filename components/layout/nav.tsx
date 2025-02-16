@@ -23,44 +23,44 @@ export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
 
     const menuItems = [
-        { label: "All Services", href: "/search" },
+        { label: "All Services", href: "/product" },
         {
             label: "Hosting",
-            href: "/search",
+            href: "/product",
             items: [
-                { label: "Minecraft Hosting", href: "/search" },
-                { label: "Private Hosting", href: "/search" },
+                { label: "Minecraft Hosting", href: "/product" },
+                { label: "Private Hosting", href: "/product" },
             ]
         },
         {
             label: "Domain",
-            href: "/search",
+            href: "/product",
             items: [
-                { label: "Domain", href: "/search" },
+                { label: "Domain", href: "/product" },
             ]
         },
         {
             label: "Vps",
-            href: "/search",
+            href: "/product",
             items: [
-                { label: "Vps Legale", href: "/search" },
-                { label: "Vps Digital Ocean", href: "/search" },
+                { label: "Vps Legale", href: "/product" },
+                { label: "Vps Digital Ocean", href: "/product" },
             ]
         },
     ]
 
     return (
-        <nav className="sticky top-0 bg-background/80 backdrop-blur-lg z-50 ">
-            <div className="container mx-auto px-10 border-b">
+        <nav className="sticky top-0 bg-background/80 backdrop-blur-lg z-50">
+            <div className=" mx-auto px-10 border-b">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-1">
                         <Link href="/">
-                            <Image src="/logo.svg" alt="logo" width={32} height={32} />
+                            <Image src="/logo.svg" alt="orvion store" width={32} height={32} />
                         </Link>
 
                         <Link href="/" className="mr-7">
                             <h1 className="text-xl font-bold">
-                                Orvion Store<span className="text-pink-500">.</span>
+                                Orvion<span className="text-pink-500">.</span>
                             </h1>
                         </Link>
 
@@ -72,7 +72,7 @@ export function Navbar() {
                                             {item.label}
                                             <ChevronDown className="h-4 w-4" />
                                         </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="bg-dark">
+                                        <DropdownMenuContent >
                                             {item.items.map((subItem) => (
                                                 <DropdownMenuItem key={subItem.label}>
                                                     <Link href={subItem.href} className="w-full">
@@ -100,8 +100,8 @@ export function Navbar() {
                             <SearchCommand />
                         </div>
 
-                        <Button className="bg-blue-700 hover:bg-blue-800 text-white" >
-                            Order now
+                        <Button variant="outline" className=" bg-blue-800 hover:bg-blue-900 border-blue-500 text-white hidden md:block" >
+                            Order Sekarang
                         </Button>
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild className="md:hidden">
