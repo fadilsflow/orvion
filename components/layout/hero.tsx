@@ -7,16 +7,16 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
+import { SearchCommand } from "./search-comand"
 
 export function Hero() {
     return (
-        <section className="container relative mx-auto px-4 py-32 text-center">
-            
+        <section className=" relative mx-auto px-4 py-32 text-center">
+
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                <span className="text-emerald-400">Minecraft</span> Hosting
+                <span className="text-emerald-500">Minecraft</span> Hosting
                 <br />
-                <span className="text-cyan-400 font-bold">Terbaik</span> dengan <span className="text-pink-500 font-bold ">99.9%</span>
+                <span className="text-cyan-500 font-bold">Terbaik</span> dengan <span className="text-pink-500 font-bold ">99.9%</span>
                 <br />
                 Uptime!
             </h1>
@@ -25,15 +25,17 @@ export function Hero() {
                 <br />
                 <span className="text-2xl text-pink-500 font-bold">Rp6.000/GB</span>
             </p>
+
+
             <div className="flex justify-center gap-4">
                 <DropdownMenu>
-                    <DropdownMenuTrigger className={buttonVariants({ variant: "outline" })}>Community</DropdownMenuTrigger>
+                    <DropdownMenuTrigger className={cn(buttonVariants({ variant: "outline" }), "bg-emerald-800 hover:bg-emerald-900 border-emerald-500 text-white")}>Community</DropdownMenuTrigger>
                     <DropdownMenuContent className="bg-dark">
                         <DropdownMenuItem>Whatsapp</DropdownMenuItem>
                         <DropdownMenuItem>Discord</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <Link href={"/search"} className={cn(buttonVariants({ variant: "outline" }), "bg-blue-700 hover:bg-blue-800 text-white")}>Order Now</Link>
+                <Link href={"/product"} className={cn(buttonVariants({ variant: "outline" }), "bg-blue-800 hover:bg-blue-900 border-blue-500 text-white")}>Order Sekarang</Link>
             </div>
         </section >
     )
