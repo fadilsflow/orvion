@@ -18,7 +18,7 @@ export default function Comunity() {
                     target="_blank"
                     className={buttonVariants({
                         variant: "outline",
-                        className: "gap-2 hover:bg-green-500/10"
+                        className: "gap-2 border-green-500 hover:bg-green-900 bg-green-800 text-white"
                     })}
                 >
                     <MessageCircle className="w-4 h-4" />
@@ -29,7 +29,7 @@ export default function Comunity() {
                     target="_blank"
                     className={buttonVariants({
                         variant: "outline",
-                        className: "gap-2 hover:bg-[#5865F2]/10"
+                        className: "gap-2 border-purple-500 hover:bg-purple-900 bg-purple-800 text-white"
                     })}
                 >
                     <MessageCircle className="w-4 h-4" />
