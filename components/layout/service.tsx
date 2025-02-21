@@ -10,8 +10,35 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+// Define the Specs interface
+interface Specs {
+  cpu: string;
+  ram: string;
+  ssd: string;
+}
+
+// Define the PackageItem interface
+interface PackageItem {
+  name: string;
+  specs?: Specs; // specs is optional
+  discountPrice?: number;
+  price: number;
+  category: string;
+}
+
+// Define the GroupedPackages interface
+interface GroupedPackages {
+  [key: string]: {
+    package: string;
+    cpu: string;
+    ram: string;
+    disk: string;
+    price: number;
+  }[];
+}
+
 export function Service() {
-  const [packages, setPackages] = useState({
+  const [packages, setPackages] = useState<GroupedPackages>({
     hosting: [],
     domain: [],
     vps: [],
@@ -20,21 +47,35 @@ export function Service() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("/product.json"); // Ganti dengan path yang sesuai
-      const data = await response.json();
+      const data: PackageItem[] = await response.json(); // Use the PackageItem interface
 
       // Kelompokkan data berdasarkan kategori
-      const groupedPackages = data.reduce((acc, item) => {
+      const groupedPackages = data.reduce((acc: GroupedPackages, item) => {
         const category = item.category;
         if (!acc[category]) {
           acc[category] = [];
         }
-        acc[category].push({
-          package: item.name,
-          cpu: item.specs.cpu,
-          ram: item.specs.ram,
-          disk: item.specs.ssd,
-          price: item.discountPrice ? item.discountPrice : item.price,
-        });
+
+        // Check if specs is defined and has the required properties
+        if (item.specs) {
+          acc[category].push({
+            package: item.name,
+            cpu: item.specs.cpu || "N/A",
+            ram: item.specs.ram || "N/A",
+            disk: item.specs.ssd || "N/A",
+            price: item.discountPrice ? item.discountPrice : item.price,
+          });
+        } else {
+          // Handle the case where specs is not defined
+          acc[category].push({
+            package: item.name,
+            cpu: "N/A",
+            ram: "N/A",
+            disk: "N/A",
+            price: item.discountPrice ? item.discountPrice : item.price,
+          });
+        }
+
         return acc;
       }, {});
 

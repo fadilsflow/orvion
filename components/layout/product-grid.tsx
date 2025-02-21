@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, JSX } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import PurchaseDialog from "./purchase-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Box, Server, Globe, Cpu, Check } from "lucide-react"; // Import ikon yang diperlukan
 
+// Define the Product interface
 interface Product {
   id: string;
   name: string;
@@ -22,13 +23,14 @@ interface Product {
   } | null;
 }
 
+// Define the props for the ProductGrid component
 interface ProductGridProps {
   selectedCategory: string;
-  selectedSort: string;
+  selectedSort: "price-low" | "price-high" | "name"; // Define the possible sort options
 }
 
 // Pemetaan kategori ke ikon
-const categoryIcons = {
+const categoryIcons: Record<string, JSX.Element> = {
   hosting: <Server className="w-6 h-6 text-dark" />,
   domain: <Globe className="w-6 h-6 text-dark" />,
   vps: <Cpu className="w-6 h-6 text-dark" />,
@@ -39,7 +41,7 @@ export function ProductGrid({
   selectedSort,
 }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<{
     id: string | null;
@@ -51,7 +53,12 @@ export function ProductGrid({
       try {
         const response = await fetch("/product.json");
         if (!response.ok) throw new Error("Network response was not ok");
-        const data = await response.json();
+        const data: Product[] = await response.json(); // Use the Product interface
+
+        data.forEach((product: Product) => {
+          product.specs = product.specs || {}; // Default to an empty object
+        });
+
         setProducts(data);
       } catch (error) {
         setError("Gagal memuat produk. Silakan coba lagi.");
@@ -63,10 +70,7 @@ export function ProductGrid({
   }, []);
 
   const filteredProducts = useMemo(() => {
-    return products.filter(
-      (product) =>
-        selectedCategory === "all" || product.category === selectedCategory
-    );
+    return products.filter((product) => product.category === selectedCategory);
   }, [products, selectedCategory]);
 
   const sortedProducts = useMemo(() => {

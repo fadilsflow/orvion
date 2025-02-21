@@ -1,4 +1,10 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ProductFiltersProps {
   selectedCategory: string;
@@ -40,8 +46,8 @@ export function ProductFilters({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="relevance">Relevansi</SelectItem>
-            <SelectItem value="price-low">Harga: Rendah ke Tinggi</SelectItem>
-            <SelectItem value="price-high">Harga: Tinggi ke Rendah</SelectItem>
+            <SelectItem value="price-low">Harga Tertinggi</SelectItem>
+            <SelectItem value="price-high">Harga Terendah</SelectItem>
             <SelectItem value="name">Nama</SelectItem>
           </SelectContent>
         </Select>

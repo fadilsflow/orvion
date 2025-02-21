@@ -16,7 +16,7 @@ const DomainPage = () => {
       <main className=" px-4 py-8 flex flex-col items-center ">
         <div className=" mb-8  space-y-6 text-center flex flex-col items-center">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Produk Hosting</h1>
+            <h1 className="text-3xl font-bold">VPS</h1>
             <p className="text-muted-foreground pb-5">
               Pilih dari berbagai pilihan VPS kami
             </p>
@@ -28,7 +28,7 @@ const DomainPage = () => {
             onSortChange={setSelectedSort}
             showCategoryFilter={false} // Menyembunyikan filter kategori
           />
-          <ProductGrid selectedCategory="vps" selectedSort={selectedSort} />
+          <ProductGrid selectedCategory="vps" selectedSort="price-low" />
         </div>
       </main>
     </div>
