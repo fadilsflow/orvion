@@ -45,7 +45,7 @@ export default function PurchaseDialog({
 Harga: ${product.price}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/628967875028?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/6289678750281?text=${encodedMessage}`, "_blank");
   };
 
   return (
