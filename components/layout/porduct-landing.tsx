@@ -5,8 +5,8 @@ import { ProductGrid } from "@/components/layout/product-grid";
 // Pastikan path ini sesuai dengan lokasi komponen ProductGrid
 import React, { useState } from "react";
 
-const DomainPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+export function ProductLanding() {
+  const [selectedCategory, setSelectedCategory] = useState("hosting");
 
   const [selectedSort, setSelectedSort] = useState("relevance");
 
@@ -16,9 +16,13 @@ const DomainPage = () => {
       <main className=" px-4 py-8 flex flex-col items-center ">
         <div className=" mb-8  space-y-6 text-center flex flex-col items-center">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Produk Hosting</h1>
+            <h1 className="text-3xl font-bold">
+              Mau bikin Server Minecraft? Pilih yang Lo Butuh!
+            </h1>
             <p className="text-muted-foreground pb-5">
-              Pilih dari berbagai solusi hosting kami
+              Butuh hosting, VPS, atau domain buat server Minecraft? Ada yang
+              murah, ada yang kenceng, tinggal pilih sesuai kebutuhan. Gak pake
+              ribet, langsung gas!
             </p>
           </div>
           <ProductFilters
@@ -26,13 +30,14 @@ const DomainPage = () => {
             selectedSort={selectedSort}
             onCategoryChange={setSelectedCategory}
             onSortChange={setSelectedSort}
-            showCategoryFilter={false} // Menyembunyikan filter kategori
+            showCategoryFilter={true} // Menyembunyikan filter kategori
           />
-          <ProductGrid selectedCategory="hosting" selectedSort={selectedSort} />
+          <ProductGrid
+            selectedCategory={selectedCategory}
+            selectedSort={selectedSort}
+          />
         </div>
       </main>
     </div>
   );
-};
-
-export default DomainPage;
+}

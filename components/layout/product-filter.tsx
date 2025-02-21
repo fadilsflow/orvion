@@ -31,7 +31,6 @@ export function ProductFilters({
             <SelectValue placeholder="Kategori" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Semua</SelectItem>
             <SelectItem value="hosting">Hosting</SelectItem>
             <SelectItem value="vps">VPS</SelectItem>
             <SelectItem value="domain">Domain</SelectItem>
@@ -46,8 +45,8 @@ export function ProductFilters({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="relevance">Relevansi</SelectItem>
-            <SelectItem value="price-low">Harga Tertinggi</SelectItem>
-            <SelectItem value="price-high">Harga Terendah</SelectItem>
+            <SelectItem value="price-high">Harga Tertinggi</SelectItem>
+            <SelectItem value="price-low">Harga Terendah</SelectItem>
             <SelectItem value="name">Nama</SelectItem>
           </SelectContent>
         </Select>

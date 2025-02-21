@@ -15,7 +15,7 @@ export default function Comunity() {
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <Link
-          href="/"
+          href="https://chat.whatsapp.com/E8r7E45ZRd4DfnNvaovDZN"
           target="_blank"
           className={buttonVariants({
             variant: "outline",
@@ -26,7 +26,7 @@ export default function Comunity() {
           <MessageCircle className="w-4 h-4" />
           Whatsapp Community
         </Link>
-        <Link
+        {/* <Link
           href="/"
           target="_blank"
           className={buttonVariants({
@@ -37,7 +37,7 @@ export default function Comunity() {
         >
           <MessageCircle className="w-4 h-4" />
           Discord Community
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation"; // Import useRouter dari Next.js
-import { Server, Globe, Cpu } from "lucide-react";
+import { Link } from "lucide-react"; // Hanya mengimpor ikon yang diperlukan
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
@@ -17,14 +17,17 @@ import {
 } from "@/components/ui/command";
 
 const menuItems = [
-  { label: "Hosting", href: "/product/hosting" },
-  { label: "Domain", href: "/product/domain" },
-  { label: "VPS", href: "/product/vps" },
+  { label: "Hosting", href: "/hosting" },
+  { label: "Domain", href: "/domain" },
+  { label: "VPS", href: "/vps" },
+  { label: "Terms", href: "/terms-of-service" },
+  { label: "Contact", href: "/contact" },
 ];
 
-interface SearchCommandProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-export function SearchCommand({ className, ...props }: SearchCommandProps) {
+export function SearchCommand({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter(); // Inisialisasi useRouter
 
@@ -32,7 +35,7 @@ export function SearchCommand({ className, ...props }: SearchCommandProps) {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen((prevOpen) => !prevOpen);
       }
     };
 
@@ -68,12 +71,8 @@ export function SearchCommand({ className, ...props }: SearchCommandProps) {
                 key={item.label}
                 onSelect={() => handleItemClick(item.href)}
               >
-                {item.label === "Hosting" && (
-                  <Server className="mr-2 h-4 w-4" />
-                )}
-                {item.label === "Domain" && <Globe className="mr-2 h-4 w-4" />}
-                {item.label === "VPS" && <Cpu className="mr-2 h-4 w-4" />}
-                <span>{item.label}</span>
+                <Link className="mr-2 h-4 w-4" />
+                {item.label}
               </CommandItem>
             ))}
           </CommandGroup>

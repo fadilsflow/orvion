@@ -28,7 +28,7 @@ const DomainPage = () => {
             onSortChange={setSelectedSort}
             showCategoryFilter={false} // Menyembunyikan filter kategori
           />
-          <ProductGrid selectedCategory="domain" selectedSort="price-low" />
+          <ProductGrid selectedCategory="domain" selectedSort={selectedSort} />
         </div>
       </main>
     </div>

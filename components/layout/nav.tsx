@@ -9,42 +9,31 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { Menu, Search, ChevronDown } from "lucide-react";
+import { Menu, MessageCircle, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Changed from useRouter to usePathname
 import React from "react";
 import Image from "next/image";
 import { SearchCommand } from "@/components/layout/search-comand";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Use usePathname instead of useRouter
 
   const menuItems = [
-    {
-      label: "Hosting",
-      href: "/hosting",
-    },
-    {
-      label: "Domain",
-      href: "/domain",
-    },
-    {
-      label: "Vps",
-      href: "/vps",
-    },
+    { label: "Hosting", href: "/hosting" },
+    { label: "Domain", href: "/domain" },
+    { label: "Vps", href: "/vps" },
+    { label: "Terms", href: "/terms-of-service" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
     <nav className="sticky top-0 bg-background/80 backdrop-blur-lg z-50">
-      <div className=" mx-auto px-10 border-b">
+      <div className="mx-auto px-10 border-b">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-1">
             <Link href="/">
@@ -55,41 +44,24 @@ export function Navbar() {
                 height={32}
               />
             </Link>
-
             <Link href="/" className="mr-7">
-              <h1 className="text-xl font-bold">
-                Orvion<span className="text-emerald-500">.</span>
-              </h1>
+              <h1 className="text-xl font-bold">Orvion</h1>
             </Link>
-
             <div className="hidden md:flex gap-6">
-              {menuItems.map((item) =>
-                item.items ? (
-                  <DropdownMenu key={item.label}>
-                    <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                      {item.label}
-                      <ChevronDown className="h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      {item.items.map((subItem) => (
-                        <DropdownMenuItem key={subItem.label}>
-                          <Link href={subItem.href} className="w-full">
-                            {subItem.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-bold transition-colors",
+                    pathname === item.href
+                      ? "text-blue-500"
+                      : "text-muted-foreground hover:text-white"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -100,9 +72,17 @@ export function Navbar() {
 
             <Button
               variant="outline"
-              className=" bg-blue-800 hover:bg-blue-900 border-blue-500 text-white hidden md:block"
+              className="bg-emerald-800 hover:bg-emerald-900 border-emerald-500 text-white hidden md:flex items-center gap-2"
+              asChild
             >
-              Order Sekarang
+              <Link
+                href="https://wa.me/6289678750281?text=Bang%20mau%20order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                Whatsapp <MessageCircle className="w-5 h-5" />
+              </Link>
             </Button>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
@@ -121,7 +101,7 @@ export function Navbar() {
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center mb-8">
                     <h2 className="text-lg font-bold">Menu</h2>
-                    <SheetClose className=" opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    <SheetClose className="opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
                       <VisuallyHidden>Close menu</VisuallyHidden>
                     </SheetClose>
                   </div>
@@ -135,8 +115,10 @@ export function Navbar() {
                         <Link
                           href={item.href}
                           className={cn(
-                            "px-4 py-3  transition-colors",
-                            "text-foreground/80 hover:bg-accent hover:text-primary",
+                            "px-4 py-3 transition-colors",
+                            pathname === item.href
+                              ? "text-blue-500"
+                              : "text-foreground/80 hover:bg-accent hover:text-primary",
                             "focus:outline-none focus:ring-2 focus:ring-primary"
                           )}
                         >

@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SearchCommand } from "./search-comand";
+import { MessageCircle } from "lucide-react";
 
 export function Hero() {
   return (
@@ -37,12 +37,33 @@ export function Hero() {
             Community
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-dark">
-            <DropdownMenuItem>Whatsapp</DropdownMenuItem>
-            <DropdownMenuItem>Discord</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link
+                href="https://chat.whatsapp.com/E8r7E45ZRd4DfnNvaovDZNr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <DropdownMenuItem>
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuItem>
+            {/* <DropdownMenuItem>
+              <Link
+                href="https://discord.gg/your-invite-code"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <DropdownMenuItem>
+                  {" "}
+                  <Globe className="w-4 h-4" /> Discord
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
         <Link
-          href={"/product"}
+          href={"/hosting"}
           className={cn(
             buttonVariants({ variant: "outline" }),
             "bg-blue-800 hover:bg-blue-900 border-blue-500 text-white"

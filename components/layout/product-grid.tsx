@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState, useMemo, JSX } from "react";
+import { useEffect, useState, useMemo, type JSX } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import PurchaseDialog from "./purchase-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Box, Server, Globe, Cpu, Check } from "lucide-react"; // Import ikon yang diperlukan
+import { Box, Server, Globe, Cpu, Check } from "lucide-react";
+import { Button } from "../ui/button";
 
 // Define the Product interface
 interface Product {
@@ -26,7 +27,7 @@ interface Product {
 // Define the props for the ProductGrid component
 interface ProductGridProps {
   selectedCategory: string;
-  selectedSort: "price-low" | "price-high" | "name"; // Define the possible sort options
+  selectedSort: string; // Define the possible sort options
 }
 
 // Pemetaan kategori ke ikon
@@ -56,12 +57,17 @@ export function ProductGrid({
         const data: Product[] = await response.json(); // Use the Product interface
 
         data.forEach((product: Product) => {
-          product.specs = product.specs || {}; // Default to an empty object
+          product.specs = product.specs || {
+            ram: "N/A", // Default value
+            cpu: "N/A", // Default value
+            ssd: "N/A", // Default value
+          };
         });
 
         setProducts(data);
       } catch (error) {
         setError("Gagal memuat produk. Silakan coba lagi.");
+        console.log(error);
       } finally {
         setLoading(false);
       }
@@ -101,52 +107,52 @@ export function ProductGrid({
   }
 
   if (error) {
-    return <div className="text-red-500 text-center">{error}</div>;
+    return <div className="text-red-700 text-center">{error}</div>;
   }
 
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
         {sortedProducts.map((product) => (
-          <Card
-            key={product.id}
-            className={cn(
-              "group relative overflow-hidden transition-all duration-300",
-              "hover:border-primary hover:shadow-lg cursor-pointer",
-              selectedProduct.id === product.id && "border-primary"
-            )}
-            onClick={() => setSelectedProduct({ id: product.id, isOpen: true })}
-            role="button"
-            aria-label={`View details for ${product.name}`}
-          >
-            <CardContent className="bg-muted/20 p-6">
+          <Card key={product.id} className={cn("relative overflow-hidden")}>
+            <CardContent className="p-6 bg-muted/20">
               <div className="flex flex-col justify-center text-center items-center mb-4 px-10">
-                <div className="w-12 h-12 rounded-full bg-blue-700 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
                   {categoryIcons[product.category] || (
-                    <Box className="w-6 h-6 text-dark" />
+                    <Box className="w-8 h-8 text-white" />
                   )}
                 </div>
-                <div>
-                  <h1 className="text-lg font-medium border-b mt-2">
+                <div className=" mt-4">
+                  <h1 className="text-lg font-semibold text-white border-b w-full pb-2">
                     {product.name}
                   </h1>
                 </div>
               </div>
-              <div className="flex items-center text-center font-light flex-col space-y-2">
-                {Object.entries(product.specs).map(([key, value]) => (
-                  <div key={key} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-blue-600" />
-                    <span>{`${
-                      key.charAt(0).toUpperCase() + key.slice(1)
-                    }: ${value}`}</span>
-                  </div>
-                ))}
+              <div className="flex items-center text-center font-medium flex-col space-y-3">
+                {product.specs ? (
+                  Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="flex items-center gap-2 ">
+                      <Check className="w-5 h-5 text-emerald-600" />
+                      <span>{`${
+                        key.charAt(0).toUpperCase() + key.slice(1)
+                      }: ${value}`}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div>No specifications available.</div>
+                )}
               </div>
-              <div className="mt-5 text-center bg-blue-700 rounded-full">
-                <h1 className="text-lg w-full font-semibold text-primary px-3 py-1 rounded-full">
+              <div className="mt-6 text-center">
+                <Button
+                  variant={"outline"}
+                  className="bg-blue-800 border border-blue-500 hover:bg-blue-900 rounded-full font-bold text-white"
+                  onClick={() =>
+                    setSelectedProduct({ id: product.id, isOpen: true })
+                  }
+                >
                   Rp {product.price.toLocaleString("id-ID")}{" "}
-                  <span className="text-sm">{product.times}</span>
-                </h1>
+                  <span className="text-sm font-normal">/{product.times}</span>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -157,7 +163,33 @@ export function ProductGrid({
         onOpenChange={(open) =>
           setSelectedProduct((prev) => ({ ...prev, isOpen: open }))
         }
-        product={products.find((p) => p.id === selectedProduct.id)}
+        product={
+          products.find((p) => p.id === selectedProduct.id)
+            ? {
+                name: products.find((p) => p.id === selectedProduct.id)!.name,
+                price: products
+                  .find((p) => p.id === selectedProduct.id)!
+                  .price.toString(),
+                specs: {
+                  ram:
+                    products.find((p) => p.id === selectedProduct.id)!.specs
+                      ?.ram || "N/A",
+                  cpu:
+                    products.find((p) => p.id === selectedProduct.id)!.specs
+                      ?.cpu || "N/A",
+                  ssd:
+                    products.find((p) => p.id === selectedProduct.id)!.specs
+                      ?.ssd || "N/A",
+                  backupSlots:
+                    products.find((p) => p.id === selectedProduct.id)!.specs
+                      ?.backupSlots || "N/A",
+                  databaseSlots:
+                    products.find((p) => p.id === selectedProduct.id)!.specs
+                      ?.databaseSlots || "N/A",
+                },
+              }
+            : null
+        }
       />
     </>
   );

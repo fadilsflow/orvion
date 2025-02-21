@@ -8,7 +8,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, Server, PhoneIcon as WhatsappIcon } from "lucide-react";
+import { AlertCircle, PhoneIcon as WhatsappIcon } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -45,7 +45,7 @@ export default function PurchaseDialog({
 Harga: ${product.price}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/1234567890?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/628967875028?text=${encodedMessage}`, "_blank");
   };
 
   return (
@@ -96,7 +96,6 @@ Harga: ${product.price}`;
               <Button
                 variant="outline"
                 className="w-full bg-blue-800 hover:bg-blue-900 border-blue-500 text-white"
-                variant="default"
                 disabled
               >
                 Beli di Platform

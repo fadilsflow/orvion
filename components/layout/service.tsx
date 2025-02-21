@@ -23,6 +23,7 @@ interface PackageItem {
   specs?: Specs; // specs is optional
   discountPrice?: number;
   price: number;
+  times: string; // Ensure times is included
   category: string;
 }
 
@@ -34,6 +35,7 @@ interface GroupedPackages {
     ram: string;
     disk: string;
     price: number;
+    times: string; // Add times to the grouped package
   }[];
 }
 
@@ -64,6 +66,7 @@ export function Service() {
             ram: item.specs.ram || "N/A",
             disk: item.specs.ssd || "N/A",
             price: item.discountPrice ? item.discountPrice : item.price,
+            times: item.times, // Include times in the grouped package
           });
         } else {
           // Handle the case where specs is not defined
@@ -73,6 +76,7 @@ export function Service() {
             ram: "N/A",
             disk: "N/A",
             price: item.discountPrice ? item.discountPrice : item.price,
+            times: item.times, // Include times in the grouped package
           });
         }
 
@@ -88,11 +92,12 @@ export function Service() {
   return (
     <section className="container mx-auto px-10 py-20 ">
       <h2 className="text-3xl font-bold text-center mb-4">
-        Hosting Minecraft Terbaik untuk Server Anda
+        Daftar Produk & Spesifikasi{" "}
       </h2>
       <p className="text-muted-foreground text-center mb-12">
-        Dapatkan performa stabil, koneksi cepat, dan uptime maksimal untuk
-        pengalaman bermain tanpa gangguan.
+        Lihat detail lengkap hosting, VPS, dan domain yang tersedia. Sesuaikan
+        dengan kebutuhan server Minecraft lo—mau yang hemat atau yang ngebut,
+        semua ada!
       </p>
 
       {/* Tabs */}
@@ -137,7 +142,8 @@ export function Service() {
                           {item.disk}
                         </TableCell>
                         <TableCell className="text-center py-4">
-                          {item.price}
+                          {`Rp ${item.price} / ${item.times}`}{" "}
+                          {/* Display times correctly */}
                         </TableCell>
                       </TableRow>
                     ))}
