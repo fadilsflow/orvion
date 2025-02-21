@@ -3,6 +3,7 @@ import { Features } from "@/components/layout/features";
 import { Service } from "@/components/layout/service";
 import Testimonials from "@/components/layout/testimoni";
 import Comunity from "@/components/layout/comunity";
+  
 
 
 export default function Home() {
@@ -13,7 +14,6 @@ export default function Home() {
       <Features />
       <Comunity />
       <Testimonials />
-
     </div>
   );
 }

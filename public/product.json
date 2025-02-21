@@ -1,0 +1,265 @@
+[
+  {
+    "id": "1",
+    "name": "VPS Digital Ocean 4GB 2Core",
+    "category": "vps",
+    "price": 30000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "4GB",
+      "cpu": "2Core",
+      "ssd": "170GB"
+    }
+  },
+  {
+    "id": "2",
+    "name": "VPS Digital Ocean 8GB 4Core",
+    "category": "vps",
+    "price": 35000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "8GB",
+      "cpu": "4Core",
+      "ssd": "240GB"
+    }
+  },
+  {
+    "id": "3",
+    "name": "VPS Digital Ocean 16GB 4Core",
+    "category": "vps",
+    "price": 45000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "16GB",
+      "cpu": "4Core",
+      "ssd": "300GB"
+    }
+  },
+  {
+    "id": "4",
+    "name": ".my.id Domain",
+    "category": "domain",
+    "price": 5000,
+    "times": "Tahun"
+  },
+  {
+    "id": "5",
+    "name": ".biz.id Domain",
+    "category": "domain",
+    "price": 5000,
+    "times": "Tahun"
+  },
+  {
+    "id": "6",
+    "name": ".online Domain",
+    "category": "domain",
+    "price": 40000,
+    "times": "Tahun"
+  },
+  {
+    "id": "7",
+    "name": ".xyz Domain",
+    "category": "domain",
+    "price": 40000,
+    "times": "Tahun"
+  },
+  {
+    "id": "8",
+    "name": ".pro Domain",
+    "category": "domain",
+    "price": 50000,
+    "times": "Tahun"
+  },
+  {
+    "id": "9",
+    "name": ".com Domain",
+    "category": "domain",
+    "price": 125000,
+    "times": "Tahun"
+  },
+  {
+    "id": "10",
+    "name": ".id Domain",
+    "category": "domain",
+    "price": 220000,
+    "times": "Tahun"
+  },
+  {
+    "id": "11",
+    "name": "Hosting Basic 8GB",
+    "category": "hosting",
+    "price": 15000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "8GB",
+      "cpu": "400%",
+      "ssd": "20GB"
+    }
+  },
+  {
+    "id": "12",
+    "name": "Hosting Basic 12GB",
+    "category": "hosting",
+    "price": 25000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "12GB",
+      "cpu": "400%",
+      "ssd": "20GB"
+    }
+  },
+  {
+    "id": "13",
+    "name": "Hosting Basic 16GB",
+    "category": "hosting",
+    "price": 30000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "16GB",
+      "cpu": "400%",
+      "ssd": "20GB"
+    }
+  },
+  {
+    "id": "14",
+    "name": "Hosting Basic 24GB",
+    "category": "hosting",
+    "price": 40000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "24GB",
+      "cpu": "400%",
+      "ssd": "20GB"
+    }
+  },
+  {
+    "id": "15",
+    "name": "Hosting Premium 8GB",
+    "category": "hosting",
+    "price": 50000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "8GB",
+      "cpu": "400%",
+      "ssd": "25GB",
+      "backupSlots": "1"
+    }
+  },
+  {
+    "id": "16",
+    "name": "Hosting Premium 12GB",
+    "category": "hosting",
+    "price": 70000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "12GB",
+      "cpu": "400%",
+      "ssd": "25GB",
+      "backupSlots": "1"
+    }
+  },
+  {
+    "id": "17",
+    "name": "Hosting Premium 16GB",
+    "category": "hosting",
+    "price": 90000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "16GB",
+      "cpu": "400%",
+      "ssd": "25GB",
+      "backupSlots": "1"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Hosting Premium 24GB",
+    "category": "hosting",
+    "price": 120000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "24GB",
+      "cpu": "800%",
+      "ssd": "25GB",
+      "backupSlots": "1"
+    }
+  },
+  {
+    "id": "19",
+    "name": "Private Host 16GB CPU 600",
+    "category": "private host",
+    "price": 70000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "16GB",
+      "cpu": "600",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  },
+  {
+    "id": "20",
+    "name": "Private Host 16GB CPU 800",
+    "category": "private host",
+    "price": 100000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "16GB",
+      "cpu": "800",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  },
+  {
+    "id": "21",
+    "name": "Private Host 24GB CPU 600",
+    "category": "private host",
+    "price": 140000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "24GB",
+      "cpu": "600",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  },
+  {
+    "id": "22",
+    "name": "Private Host 24GB CPU 800",
+    "category": "private host",
+    "price": 160000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "24GB",
+      "cpu": "800",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  },
+  {
+    "id": "23",
+    "name": "Private Host 32GB CPU 600",
+    "category": "private host",
+    "price": 180000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "32GB",
+      "cpu": "600",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  },
+  {
+    "id": "24",
+    "name": "Private Host 32GB CPU 800",
+    "category": "private host",
+    "price": 200000,
+    "times": "Bulan",
+    "specs": {
+      "ram": "32GB",
+      "cpu": "800",
+      "ssd": "70GB",
+      "backupSlots": "5"
+    }
+  }
+]

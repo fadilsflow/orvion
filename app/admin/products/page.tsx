@@ -18,6 +18,8 @@ export default function AdminProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
+
+  
   const loadProducts = async () => {
     const data = await ProductService.getAll()
     setProducts(data)
