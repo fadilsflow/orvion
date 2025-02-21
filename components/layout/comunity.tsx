@@ -20,7 +20,7 @@ export default function Comunity() {
           className={buttonVariants({
             variant: "outline",
             className:
-              "gap-2 border-green-500 hover:bg-green-900 bg-green-800 text-white",
+              "gap-2 bg-emerald-800 hover:bg-emerald-900 border-emerald-600 border-2 text-white",
           })}
         >
           <MessageCircle className="w-4 h-4" />

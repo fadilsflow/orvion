@@ -145,7 +145,7 @@ export function ProductGrid({
               <div className="mt-6 text-center">
                 <Button
                   variant={"outline"}
-                  className="bg-blue-800 border border-blue-500 hover:bg-blue-900 rounded-full font-bold text-white"
+                  className="bg-blue-800 border border-blue-500 hover:bg-blue-900  font-bold text-white"
                   onClick={() =>
                     setSelectedProduct({ id: product.id, isOpen: true })
                   }

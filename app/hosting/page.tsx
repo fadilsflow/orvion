@@ -16,7 +16,7 @@ const DomainPage = () => {
       <main className=" px-4 py-8 flex flex-col items-center ">
         <div className=" mb-8  space-y-6 text-center flex flex-col items-center">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Produk Hosting</h1>
+            <h1 className="text-3xl font-bold">Minecraft Hosting</h1>
             <p className="text-muted-foreground pb-5">
               Pilih dari berbagai solusi hosting kami
             </p>
