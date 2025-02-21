@@ -15,7 +15,7 @@ export function Hero() {
       <h1 className="text-4xl md:text-6xl font-bold mb-4">
         <span className="text-emerald-500">Minecraft</span> Hosting
         <br />
-        <span className="text-cyan-500 font-bold">Terbaik</span> dengan{" "}
+        <span className="text-blue-500 font-bold">Terbaik</span> dengan{" "}
         <span className="text-pink-500 font-bold ">99.9%</span>
         <br />
         Uptime!

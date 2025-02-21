@@ -58,7 +58,7 @@ export function Navbar() {
 
             <Link href="/" className="mr-7">
               <h1 className="text-xl font-bold">
-                Orvion<span className="text-pink-500">.</span>
+                Orvion<span className="text-emerald-500">.</span>
               </h1>
             </Link>
 

@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/command";
 
 const menuItems = [
-  { label: "All Services", href: "/product" },
   { label: "Hosting", href: "/product/hosting" },
   { label: "Domain", href: "/product/domain" },
   { label: "VPS", href: "/product/vps" },
